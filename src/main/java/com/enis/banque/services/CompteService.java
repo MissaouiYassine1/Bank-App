@@ -1,5 +1,6 @@
+package com.enis.banque.services;
 
-
+import com.enis.banque.dto.CompteDTO;
 import com.enis.banque.entities.Compte;
 
 import java.util.List;
