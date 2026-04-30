@@ -1,0 +1,13 @@
+package com.enis.banque.repositories;
+
+import com.enis.banque.entities.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import java.util.List;
+
+public interface ClientRepository extends JpaRepository<Client, Long> {
+
+    @Query("SELECT c FROM Client c WHERE LOWER(c.nom) LIKE LOWER(CONCAT('%', :kw, '%')) " +
+            "OR LOWER(c.prenom) LIKE LOWER(CONCAT('%', :kw, '%'))")
+    List<Client> search(String kw);
+}
