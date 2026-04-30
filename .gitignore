@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# À ajouter dans .gitignore
+data/
+*.mv.db
+*.trace.db
