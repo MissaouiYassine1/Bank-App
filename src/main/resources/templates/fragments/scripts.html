@@ -1,0 +1,33 @@
+<!-- Fragments de scripts réutilisables -->
+<script th:fragment="deleteScript(entityType)">
+    function confirmDelete(id, name) {
+        swal({
+            title: "Êtes-vous sûr ?",
+            text: "Vous allez supprimer le " + entityType + " : " + name,
+            icon: "warning",
+            buttons: ["Annuler", "Supprimer"],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "/" + entityType + "s/delete",
+                    type: "POST",
+                    data: {
+                        id: id
+                    },
+                    success: function() {
+                        $("#row-" + id).remove();
+                        swal(entityType + " supprimé avec succès !", {
+                            icon: "success",
+                        });
+                    },
+                    error: function() {
+                        swal("Erreur serveur !", {
+                            icon: "error",
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
