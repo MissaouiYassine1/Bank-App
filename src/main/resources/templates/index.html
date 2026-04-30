@@ -18,14 +18,78 @@
     <link href="/css/style.css" rel="stylesheet">
 
     <style>
-        /* Styles spécifiques à la page d'accueil */
+        /* ===== STYLES SPÉCIFIQUES À LA PAGE D'ACCUEIL ===== */
+
+        /* Override du body pour la page d'accueil */
+        body {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        /* Navbar transparente par défaut */
+        #mainNavbar {
+            background: transparent !important;
+            box-shadow: none !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            position: fixed !important;
+            width: 100%;
+            transition: all 0.3s ease !important;
+            padding: 0.75rem 0;
+        }
+
+        /* Navbar après scroll */
+        #mainNavbar.scrolled {
+            background: linear-gradient(135deg, #1e40af 0%, #1a56db 50%, #3b82f6 100%) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Marque et liens en blanc */
+        #mainNavbar .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #mainNavbar .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+        }
+
+        #mainNavbar .nav-link:hover {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        #mainNavbar .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        #mainNavbar .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        /* Menu mobile */
+        @media (max-width: 991px) {
+            #mainNavbar .navbar-collapse {
+                background: rgba(15, 23, 42, 0.98) !important;
+                border-radius: 16px;
+                padding: 1rem;
+                margin-top: 0.5rem;
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+        }
+
+        /* Hero Section */
         .hero-section {
             position: relative;
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             overflow: hidden;
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 30%, #1a56db 70%, #3b82f6 100%);
+            padding-top: 80px;
         }
 
         .hero-section::before {
@@ -77,6 +141,17 @@
             font-weight: 300;
             line-height: 1.8;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-stats {
@@ -193,6 +268,7 @@
             padding: 2rem;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #0f172a;
         }
 
         .floating-card-icon {
@@ -232,9 +308,11 @@
             color: #1a56db;
         }
 
+        /* Features Section */
         .features-section {
             padding: 6rem 0;
             background: #f8fafc;
+            color: #0f172a;
         }
 
         .section-title {
@@ -323,6 +401,7 @@
             line-height: 1.7;
         }
 
+        /* CTA Section */
         .cta-section {
             padding: 6rem 0;
             background: linear-gradient(135deg, #0f172a, #1a56db);
@@ -343,90 +422,45 @@
             margin-bottom: 3rem;
         }
 
-        /* Responsive */
+        /* Footer */
+        .site-footer {
+            background: #0f172a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 991px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-stats {
-                gap: 1rem;
-            }
-
-            .hero-stat {
-                padding: 1rem;
-                min-width: 100px;
-            }
-
-            .hero-stat-number {
-                font-size: 1.5rem;
-            }
-
-            .section-title,
-            .cta-title {
-                font-size: 2rem;
-            }
+            .hero-title { font-size: 2.5rem; }
+            .hero-stats { gap: 1rem; }
+            .hero-stat { padding: 1rem; min-width: 100px; }
+            .hero-stat-number { font-size: 1.5rem; }
+            .section-title, .cta-title { font-size: 2rem; }
         }
 
         @media (max-width: 767px) {
-            .hero-section {
-                min-height: auto;
-                padding: 6rem 0 4rem;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .hero-stats {
-                flex-wrap: wrap;
-            }
-
-            .hero-stat {
-                flex: 1 1 calc(50% - 1rem);
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn-hero {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero-visual {
-                margin-top: 3rem;
-            }
-
-            .section-title,
-            .cta-title {
-                font-size: 1.8rem;
-            }
-
-            .feature-card {
-                margin-bottom: 1.5rem;
-            }
+            .hero-section { min-height: auto; padding: 6rem 0 4rem; }
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-stats { flex-wrap: wrap; }
+            .hero-stat { flex: 1 1 calc(50% - 1rem); }
+            .hero-buttons { flex-direction: column; }
+            .btn-hero { width: 100%; justify-content: center; }
+            .hero-visual { margin-top: 3rem; }
+            .section-title, .cta-title { font-size: 1.8rem; }
+            .feature-card { margin-bottom: 1.5rem; }
         }
 
         @media (max-width: 575px) {
-            .hero-title {
-                font-size: 1.7rem;
-            }
-
-            .hero-stat {
-                flex: 1 1 100%;
-            }
+            .hero-title { font-size: 1.7rem; }
+            .hero-stat { flex: 1 1 100%; }
         }
     </style>
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
+<nav class="navbar navbar-expand-lg" id="mainNavbar">
     <div class="container">
         <a class="navbar-brand" href="/">
             <i class="bi bi-bank me-2"></i>BanqueApp
@@ -501,11 +535,11 @@
                     <div class="floating-card-icon">
                         <i class="bi bi-credit-card"></i>
                     </div>
-                    <h5 style="font-weight: 600; color: #0f172a; margin-bottom: 1rem;">Aperçu rapide</h5>
+                    <h5 style="font-weight: 600; margin-bottom: 1rem;">Aperçu rapide</h5>
                     <div class="floating-card-item">
                         <div class="floating-card-avatar">C1</div>
                         <div>
-                            <strong style="color: #0f172a;">Client Premium</strong>
+                            <strong>Client Premium</strong>
                             <br><small style="color: #64748b;">3 comptes actifs</small>
                         </div>
                         <span style="margin-left: auto; color: #059669; font-weight: 600;">+12 450 €</span>
@@ -513,7 +547,7 @@
                     <div class="floating-card-item">
                         <div class="floating-card-avatar" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e40af;">C2</div>
                         <div>
-                            <strong style="color: #0f172a;">Client Standard</strong>
+                            <strong>Client Standard</strong>
                             <br><small style="color: #64748b;">1 compte actif</small>
                         </div>
                         <span style="margin-left: auto; color: #059669; font-weight: 600;">+3 200 €</span>
@@ -521,7 +555,7 @@
                     <div class="floating-card-item">
                         <div class="floating-card-avatar" style="background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e;">C3</div>
                         <div>
-                            <strong style="color: #0f172a;">Client VIP</strong>
+                            <strong>Client VIP</strong>
                             <br><small style="color: #64748b;">5 comptes actifs</small>
                         </div>
                         <span style="margin-left: auto; color: #059669; font-weight: 600;">+28 900 €</span>
@@ -545,36 +579,25 @@
                         <i class="bi bi-people-fill"></i>
                     </div>
                     <h3>Gestion des Clients</h3>
-                    <p>
-                        Ajoutez, modifiez et supprimez des clients facilement.
-                        Recherche rapide et interface intuitive pour une productivité maximale.
-                    </p>
+                    <p>Ajoutez, modifiez et supprimez des clients facilement. Recherche rapide et interface intuitive.</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6">
                 <div class="feature-card">
                     <div class="feature-icon feature-icon-green">
                         <i class="bi bi-wallet2"></i>
                     </div>
                     <h3>Gestion des Comptes</h3>
-                    <p>
-                        Créez et gérez des comptes bancaires pour chaque client.
-                        Suivi des soldes en temps réel et historique complet.
-                    </p>
+                    <p>Créez et gérez des comptes bancaires. Suivi des soldes en temps réel.</p>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6">
                 <div class="feature-card">
                     <div class="feature-icon feature-icon-orange">
                         <i class="bi bi-shield-check"></i>
                     </div>
                     <h3>Sécurité Maximale</h3>
-                    <p>
-                        Protection avancée des données avec validation sécurisée.
-                        Confirmation avant chaque action critique.
-                    </p>
+                    <p>Protection avancée des données avec validation sécurisée.</p>
                 </div>
             </div>
         </div>
@@ -585,9 +608,7 @@
 <section class="cta-section">
     <div class="container">
         <h2 class="cta-title">Prêt à commencer ?</h2>
-        <p class="cta-subtitle">
-            Rejoignez notre plateforme et découvrez une nouvelle façon de gérer votre banque.
-        </p>
+        <p class="cta-subtitle">Rejoignez notre plateforme et découvrez une nouvelle façon de gérer votre banque.</p>
         <div class="d-flex justify-content-center gap-3 flex-wrap">
             <a href="/clients" class="btn-hero btn-hero-primary">
                 <i class="bi bi-people-fill"></i>
@@ -604,9 +625,9 @@
 </section>
 
 <!-- Footer -->
-<footer style="background: #0f172a; color: rgba(255,255,255,0.7); padding: 2rem 0; text-align: center;">
+<footer class="site-footer">
     <div class="container">
-        <p style="margin: 0; font-weight: 400;">
+        <p style="margin: 0;">
             &copy; 2026 <strong style="color: #ffffff;">BanqueApp</strong>. Tous droits réservés.
         </p>
     </div>
@@ -617,8 +638,9 @@
 
 <script>
     // Navbar scroll effect
+    const navbar = document.getElementById('mainNavbar');
+
     window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('mainNavbar');
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
@@ -626,7 +648,7 @@
         }
     });
 
-    // Smooth scroll pour les ancres
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
